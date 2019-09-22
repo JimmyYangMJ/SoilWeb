@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 注解配置控制器-->
+    <!-- 1.配置扫描包-->
+    <!-- 指定需要扫描的包（包括子包），使注解生效 -->
+    <context:component-scan base-package="com.mvc" annotation-config="true"/>
+
+
+    <!-- 2.配置注解处理映射-->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+
+    <!-- 3.配置适配器-->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <!--配置json转换器，告诉springmvc 使用jackson来转换json-->
+        <property name="messageConverters">
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+        </property>
+    </bean>
+
+    <!-- 4.配置资源视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--前缀-->
+        <property name="prefix" value="/WEB-INF/views/"></property>
+        <!--后缀-->
+        <property name="suffix" value=".html"></property>
+    </bean>
+
+    <!--配置多视图，可以返回xml/ json、-->
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <!-- 配置支持媒体类型 -->
+        <property name="contentNegotiationManager">
+            <bean class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+                <property name="mediaTypes">
+                    <map>
+                        <entry key="json" value="application/json"></entry>
+                        <entry key="xml" value="application/xml"></entry>
+                    </map>
+                </property>
+            </bean>
+        </property>
+        <!-- 指定默认视图 -->
+        <property name="defaultViews">
+            <!-- 支持多个视图 -->
+            <list>
+                <!-- 对josn格式视图支持 -->
+                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+            </list>
+        </property>
+    </bean>
+</beans>
