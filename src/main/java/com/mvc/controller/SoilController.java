@@ -2,12 +2,9 @@ package com.mvc.controller;
 
 import com.mvc.common.Const;
 import com.mvc.common.ServerResponse;
-import com.mvc.pojo.Soil;
-import com.mvc.pojo.User;
+import com.mvc.pojo.SoilWater;
 import com.mvc.service.ISoilService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,10 +22,10 @@ public class SoilController {
 
     @RequestMapping(value = "selectSoilSet.do", method = RequestMethod.POST)
     @ResponseBody // 使得序列化为json
-    public ServerResponse<List<Soil> > select(Integer node, String day, HttpSession session){
+    public ServerResponse<List<SoilWater> > select(Integer node, String day, HttpSession session){
         day = day + "%";
         System.out.println(day);
-        ServerResponse<List<Soil>> response = iSoilService.selectSoilSet(node, day);
+        ServerResponse<List<SoilWater>> response = iSoilService.selectSoilSet(node, day);
 
         System.out.println(response);
 
@@ -36,5 +33,11 @@ public class SoilController {
             session.setAttribute(Const.CURRENT_USER,response.getData());
         }
         return response;
+    }
+
+    @RequestMapping("test.do")
+    public String echartsJSP(){
+        System.out.println("调用了echartsJSP界面");
+        return "test";
     }
 }

@@ -2,13 +2,11 @@ package com.mvc.service.impl;
 
 import com.mvc.common.ServerResponse;
 import com.mvc.dao.SoilMapper;
-import com.mvc.pojo.Soil;
-import com.mvc.pojo.User;
+import com.mvc.pojo.SoilWater;
 import com.mvc.service.ISoilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service("iSoilService")
@@ -18,10 +16,10 @@ public class SoilServiceImpl implements ISoilService {
     private SoilMapper soilMapper;
 
     @Override
-    public ServerResponse<List<Soil>> selectSoilSet(Integer node, String day) {
+    public ServerResponse<List<SoilWater>> selectSoilSet(Integer node, String day) {
         System.out.println("node: " + node );
 
-        List<Soil> resultCount = soilMapper.selectSoilSet(node, day);
+        List<SoilWater> resultCount = soilMapper.selectSoilSet(node, day);
 
         System.out.println( resultCount.size());
 

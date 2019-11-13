@@ -6,7 +6,6 @@
 <!-- 映射文件位置  告诉mybatis 加载映射文件-->
     <mappers>
         <mapper resource="mapper/UserMapper.xml"></mapper>
-
         <mapper resource="mapper/SoilMapper.xml"></mapper>
     </mappers>
 

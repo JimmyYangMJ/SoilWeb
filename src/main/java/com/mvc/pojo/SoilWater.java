@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
-public class Soil {
-    private Integer id;
+/**
+ * @author dell
+ */
+public class SoilWater {
 
     private Integer node;
 
@@ -14,19 +16,14 @@ public class Soil {
     private Date times;
 
 
-    public Soil(Integer id, Integer node, Double humidity, Date times, Date updateTime) {
-        this.id = id;
+    public SoilWater(Integer id, Integer node, Double humidity, Date times, Date updateTime) {
         this.node = node;
         this.humidity = humidity;
         this.times = times;
     }
 
-    public Soil() {
+    public SoilWater() {
         super();
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public void setNode(Integer node) {
@@ -39,10 +36,6 @@ public class Soil {
 
     public void setTimes(Date times) {
         this.times = times;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     public Integer getNode() {
@@ -61,8 +54,7 @@ public class Soil {
     @Override
     public String toString() {
         return "Soil{" +
-                "id=" + id +
-                ", node=" + node +
+                "node=" + node +
                 ", humidity=" + humidity +
                 ", createTime=" + times +
                 '}';

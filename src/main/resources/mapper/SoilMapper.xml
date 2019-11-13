@@ -5,7 +5,7 @@
 
 <mapper namespace="com.mvc.dao.SoilMapper">
 
-    <resultMap id="BaseResultMap" type="com.mvc.pojo.Soil" >
+    <resultMap id="BaseResultMap" type="com.mvc.pojo.SoilWater" >
         <constructor >
             <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
             <arg column="node" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -17,7 +17,7 @@
     id, node, humidity, times
   	</sql>
 
-    <select id="selectSoilSet" resultType="com.mvc.pojo.Soil" parameterType="map">
+    <select id="selectSoilSet" resultType="com.mvc.pojo.SoilWater" parameterType="map">
         select *
         from soil_water
         where node = #{node}
