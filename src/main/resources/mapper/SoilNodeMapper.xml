@@ -8,16 +8,21 @@
     <resultMap id="BaseResultMap" type="com.mvc.pojo.SoilNode" >
         <constructor >
             <idArg column="node" jdbcType="INTEGER" javaType="java.lang.Integer" />
-            <arg column="state" jdbcType="INTEGER" javaType="java.lang.String" />
-            <arg column="interval" jdbcType="DOUBLE" javaType="java.lang.Integer" />
-            <arg column="location" jdbcType="DOUBLE" javaType="java.lang.String" />
-            <arg column="last_update" jdbcType="TIMESTAMP" javaType="java.lang.String" />
+            <arg column="state" jdbcType="VARCHAR" javaType="java.lang.String" />
+            <arg column="interval_s" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="location" jdbcType="VARCHAR" javaType="java.lang.String" />
+            <arg column="last_update" jdbcType="TIMESTAMP" javaType="java.util.Date" />
         </constructor>
     </resultMap>
     <sql id="Base_Column_List" >
-    nodeId, status, interval, location, last_update
+    node, state, interval_s, location, last_update
   	</sql>
 
+
+<!--    <select id="selectSoilNodeSet" resultMap="BaseResultMap">-->
+<!--        select <include refid="Base_Column_List" />-->
+<!--        from soil_node-->
+<!--    </select>-->
     <select id="selectSoilNodeSet" resultType="com.mvc.pojo.SoilNode">
         select *
         from soil_node

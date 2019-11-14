@@ -6,6 +6,7 @@ import com.mvc.pojo.SoilNode;
 import java.util.List;
 
 /**
+ * 查询结点信息
  * @author ymj
  * @Date： 2019/11/13 20:18
  */

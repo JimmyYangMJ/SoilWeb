@@ -1,5 +1,9 @@
 package com.mvc.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
+
 /**
  * 结点信息
  * @author ymj
@@ -12,11 +16,11 @@ public class SoilNode {
     /** 结点状态 */
     private String state;
     /** 监测频率， 单位秒*/
-    private int interval;
+    private int interval_s;
     /** 结点位置坐标 */
     private String location;
     /** 信息修改时间 */
-    private String last_update;
+    private Date last_update;
 
 
 
@@ -24,10 +28,10 @@ public class SoilNode {
         super();
     }
 
-    public SoilNode(int node, String state, int interval, String location, String last_update) {
+    public SoilNode(int node, String state, int interval_s, String location, Date last_update) {
         this.node = node;
         this.state = state;
-        this.interval = interval;
+        this.interval_s = interval_s;
         this.location = location;
         this.last_update = last_update;
     }
@@ -48,12 +52,12 @@ public class SoilNode {
         this.state = state;
     }
 
-    public int getInterval() {
-        return interval;
+    public int getInterval_s() {
+        return interval_s;
     }
 
-    public void setInterval(int interval) {
-        this.interval = interval;
+    public void setInterval_s(int interval_s) {
+        this.interval_s = interval_s;
     }
 
     public String getLocation() {
@@ -64,11 +68,12 @@ public class SoilNode {
         this.location = location;
     }
 
-    public String getLast_update() {
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT")
+    public Date getLast_update() {
         return last_update;
     }
 
-    public void setLast_update(String last_update) {
+    public void setLast_update(Date last_update) {
         this.last_update = last_update;
     }
 
@@ -77,7 +82,7 @@ public class SoilNode {
         return "SoilNode{" +
                 "nodeId=" + node +
                 ", status=" + state +
-                ", interval=" + interval +
+                ", interval=" + interval_s +
                 ", location=" + location +
                 ", dateTime=" + last_update +
                 '}';

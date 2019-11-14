@@ -25,5 +25,11 @@
     </select>
 <!--    and times like #{time}-->
 
+    <select id="selectSoilWhichTime" resultType="com.mvc.pojo.SoilTimeList" >
+        SELECT distinct  DATE_FORMAT(times,"%Y-%m-%d") 'timeList' , node
+        from soil_water
+        order by 1 desc;
+    </select>
+
 
 </mapper>

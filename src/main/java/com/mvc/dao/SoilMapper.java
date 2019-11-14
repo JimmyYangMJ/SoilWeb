@@ -1,6 +1,8 @@
 package com.mvc.dao;
 
 
+import com.mvc.common.ServerResponse;
+import com.mvc.pojo.SoilTimeList;
 import com.mvc.pojo.SoilWater;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -18,5 +20,12 @@ public interface SoilMapper {
      * @return json数据
      */
     List<SoilWater> selectSoilSet(@Param("node") Integer node, @Param("times") String times);
+
+
+    /**
+     * 查询哪几天有数据
+     * @return  天
+     */
+    List<SoilTimeList> selectSoilWhichTime();
 
 }

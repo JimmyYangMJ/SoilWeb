@@ -1,6 +1,7 @@
 package com.mvc.service;
 
 import com.mvc.common.ServerResponse;
+import com.mvc.pojo.SoilTimeList;
 import com.mvc.pojo.SoilWater;
 
 import java.util.List;
@@ -24,4 +25,5 @@ public interface ISoilService {
      * 查询哪几天有数据
      * @return  天
      */
+    ServerResponse<List<SoilTimeList>> selectSoilWhichTime();
 }
