@@ -24,6 +24,7 @@ public class SoilController {
 
     /**
      * 查询某天的某节点水势信息
+     * 接口
      * @param node 结点
      * @param day 日期
      * @param session 会话
@@ -44,6 +45,38 @@ public class SoilController {
         return response;
     }
 
+
+    /**
+     * 查询某时间段的水势
+     * @param startTime 开始时间
+     * @param endTime 结束时间
+     * @param session
+     * @return json数据
+     */
+    @RequestMapping(value = "selectSoilTimeRegionSet.do", method = RequestMethod.GET)
+    @ResponseBody // 使得序列化为json
+    public ServerResponse<List<SoilWater> > selectSoilTimeRegionSet(String startTime, String endTime, HttpSession session){
+        startTime = startTime + "%";
+        endTime = endTime + "%";
+
+        System.out.println(startTime + " // " + endTime);
+        ServerResponse<List<SoilWater>> response = iSoilService.selectSoilTimeRegionSet(startTime, endTime);
+
+        System.out.println(response);
+
+        if(response.isSuccess()){
+            session.setAttribute(Const.CURRENT_USER,response.getData());
+        }
+        return response;
+    }
+
+
+    /**
+     * 查询有数据的是哪几天
+     * 接口
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "selectSoilWhichTime.do", method = RequestMethod.GET)
     @ResponseBody // 使得序列化为json
     public ServerResponse<List<SoilTimeList>> selectSoilWhichTime(HttpSession session){
@@ -56,6 +89,8 @@ public class SoilController {
 //        }
         return response;
     }
+
+
 
     @RequestMapping("test.do")
     public String echartsJSP(){

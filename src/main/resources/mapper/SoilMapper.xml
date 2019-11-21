@@ -25,6 +25,16 @@
     </select>
 <!--    and times like #{time}-->
 
+    <select id="selectSoilTimeRegionSet" resultType="com.mvc.pojo.SoilWater" parameterType="map">
+        SELECT
+	        node, humidity, times
+        FROM
+	        soil_water
+        WHERE
+	        times BETWEEN #{startTimes} AND #{endTimes}
+        order by 3 ASC;
+    </select>
+
     <select id="selectSoilWhichTime" resultType="com.mvc.pojo.SoilTimeList" >
         SELECT distinct  DATE_FORMAT(times,"%Y-%m-%d") 'timeList' , node
         from soil_water

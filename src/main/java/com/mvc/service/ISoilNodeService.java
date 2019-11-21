@@ -18,4 +18,7 @@ public interface ISoilNodeService {
      */
     ServerResponse<List<SoilNode>> selectSoilNodeSet();
 
+
+    //  Todo 增加一个结点
+
 }

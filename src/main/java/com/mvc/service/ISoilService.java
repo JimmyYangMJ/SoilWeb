@@ -17,13 +17,16 @@ public interface ISoilService {
     ServerResponse<List<SoilWater>> selectSoilSet(Integer node, String day);
 
     /**
-     * 查询有多少结点
-     * @return  结点号
+     * 查询某时间段的水势
+     * @return  对应水势数据数组
      */
+    ServerResponse<List<SoilWater>> selectSoilTimeRegionSet(String startTimes, String endTimes);
 
     /**
      * 查询哪几天有数据
      * @return  天
      */
     ServerResponse<List<SoilTimeList>> selectSoilWhichTime();
+
+    // 查询
 }

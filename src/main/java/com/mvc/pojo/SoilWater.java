@@ -9,10 +9,11 @@ import java.util.Date;
  */
 public class SoilWater {
 
+    /** 结点号 */
     private Integer node;
-
+    /** 水势*/
     private Double humidity;
-
+    /** 时间*/
     private Date times;
 
 

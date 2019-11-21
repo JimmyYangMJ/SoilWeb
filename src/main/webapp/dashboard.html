@@ -143,7 +143,7 @@
             var day = $('#day').val();
             alert("结点："+node + " 时间：" + day);
             //异步请求
-            $.post(  // jQuery post() 方法
+            $.get(  // jQuery post() 方法
                 "soil/selectSoilSet.do", //访问地址
                 {node: node, day: day}, //携带的参数
                 function (data) {

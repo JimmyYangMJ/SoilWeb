@@ -3,38 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>02-jQuery-动态创建表格案例</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-    <style>
-        * { padding: 0; margin: 0; }
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-            border: 1px solid #c0c0c0;
-        }
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<!--    <style>-->
+<!--        * { padding: 0; margin: 0; }-->
+<!--        table {-->
+<!--            border-collapse: collapse;-->
+<!--            border-spacing: 0;-->
+<!--            border: 1px solid #c0c0c0;-->
+<!--        }-->
 
-        th,td {
-            border: 1px solid #d0d0d0;
-            color: #404060;
-            padding: 10px;
-        }
+<!--        th,td {-->
+<!--            border: 1px solid #d0d0d0;-->
+<!--            color: #404060;-->
+<!--            padding: 10px;-->
+<!--        }-->
 
-        th {
-            background-color: #09c;
-            font: bold 16px "微软雅黑";
-            color: #fff;
-        }
+<!--        th {-->
+<!--            background-color: #09c;-->
+<!--            font: bold 16px "微软雅黑";-->
+<!--            color: #fff;-->
+<!--        }-->
 
-        td {
-            font: 14px "微软雅黑";
-        }
-        tbody tr {
-            background-color: #f0f0f0;
-        }
-        tbody tr:hover {
-            cursor: pointer;
-            background-color: #fafafa;
-        }
-    </style>
+<!--        td {-->
+<!--            font: 14px "微软雅黑";-->
+<!--        }-->
+<!--        tbody tr {-->
+<!--            background-color: #f0f0f0;-->
+<!--        }-->
+<!--        tbody tr:hover {-->
+<!--            cursor: pointer;-->
+<!--            background-color: #fafafa;-->
+<!--        }-->
+<!--    </style>-->
     <script>
         //将集合中的数据保留两位小数
         //生成图标的方法
@@ -97,7 +99,7 @@
             var day = $('#day').val();
             alert("结点："+node + " 时间：" + day);
             //异步请求
-            $.post(  // jQuery post() 方法
+            $.get(  // jQuery post() 方法
                 "soil/selectSoilSet.do", //访问地址
                 {node: node, day: day}, //携带的参数
                 function (data) {
@@ -129,16 +131,21 @@
             </div>
         </div>
     </form>
-    <table>
-        <thead>
+
+    <div class="table-responsive">
+        <table class="table table-bordered" style="min-height:50px;">
+            <caption>水势数据as</caption>
+            <thead>
             <tr>
                 <th>node</th>
                 <th>humidity</th>
                 <th>times</th>
             </tr>
-        </thead>
-        <tbody id="J_TbData"></tbody>
-    </table>
+            </thead>
+            <tbody id="J_TbData"></tbody>
+        </table>
+    </div>
+
 
 </body>
 </html>

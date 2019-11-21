@@ -32,6 +32,21 @@ public class SoilServiceImpl implements ISoilService {
     }
 
     @Override
+    public ServerResponse<List<SoilWater>> selectSoilTimeRegionSet(String startTimes, String endTimes) {
+        System.out.println("startTime: " + startTimes + "endTime:" + endTimes );
+
+        List<SoilWater> resultCount = soilMapper.selectSoilTimeRegionSet(startTimes, endTimes);
+
+        System.out.println( resultCount.size());
+
+        if(resultCount.size() == 0 ){
+            return ServerResponse.createByErrorMessage("没有相应记录");
+        }
+
+        return ServerResponse.createBySuccess("查询成功", resultCount);
+    }
+
+    @Override
     public ServerResponse<List<SoilTimeList>> selectSoilWhichTime() {
 
         List<SoilTimeList> resultCount = soilMapper.selectSoilWhichTime();

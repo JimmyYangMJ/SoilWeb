@@ -23,6 +23,13 @@ public interface SoilMapper {
 
 
     /**
+     * 查询某时间段的水势
+     * @return  对应水势数据数组
+     */
+    List<SoilWater> selectSoilTimeRegionSet(@Param("startTimes") String startTimes, @Param("endTimes") String endTimes);
+
+
+    /**
      * 查询哪几天有数据
      * @return  天
      */
