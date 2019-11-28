@@ -39,4 +39,23 @@ public class SoilNodeServiceImpl implements ISoilNodeService {
         }
         return ServerResponse.createBySuccessMessage("添加成功");
     }
+
+    @Override
+    public ServerResponse<String> updateSoilNodeLocation(int node, String location) {
+
+        int resultCount = soilNodeMapper.updateSoilNodeLocation(node, location);
+        if(resultCount == 0){
+            return ServerResponse.createByErrorMessage("更新失败");
+        }
+        return ServerResponse.createBySuccessMessage("更新成功");
+    }
+
+    @Override
+    public ServerResponse<String> deleterSoilNode(int node) {
+        int resultCount = soilNodeMapper.deleteSoilNode(node);
+        if(resultCount == 0){
+            return ServerResponse.createByErrorMessage("删除失败");
+        }
+        return ServerResponse.createBySuccessMessage("删除成功");
+    }
 }

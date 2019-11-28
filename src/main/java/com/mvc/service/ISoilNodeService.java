@@ -26,8 +26,20 @@ public interface ISoilNodeService {
      */
     ServerResponse<String> insertSoilNode(SoilNode soilNode);
 
-    // Todo 修改结点位置信息
+    /**
+     * 修改结点位置信息
+     * @param node 结点号
+     * @param location 结点位置
+     * @return
+     */
+    ServerResponse<String> updateSoilNodeLocation(int node, String location);
 
-    // Todo 删除一个结点（结点号）
+    /**
+     * 删除一个结点（结点号）
+     * @param node 结点号
+     * @return
+     */
+    ServerResponse<String> deleterSoilNode(int node);
+
 
 }

@@ -60,7 +60,7 @@ public class SoilNodeController {
     @RequestMapping(value = "addSoilNode.do", method = RequestMethod.POST)
     @ResponseBody // 使得序列化为json
     public ServerResponse<String> addSoilNode(int node, String location, HttpSession session) {
-        List<SoilNode> list  = new ArrayList<>();
+//        List<SoilNode> list  = new ArrayList<>();
 //        SimpleDateFormat sdf = new SimpleDateFormat();// 格式化时间
 //        sdf.applyPattern("yyyy-MM-dd HH:mm:ss");// a为am/pm的标记
         Date date = new Date();// 获取当前时间
@@ -69,7 +69,36 @@ public class SoilNodeController {
 
         System.out.println(soilNode); // 存入数据库
         return soilNodeService.insertSoilNode(soilNode);
-
-
     }
+
+    /**
+     * 更新一个结点的位置信息
+     * @param node 结点号
+     * @param location 位置信息
+     * @param session
+     * @return
+     */
+    @RequestMapping(value = "updateSoilNodeLocation.do", method = RequestMethod.PUT)
+    @ResponseBody // 使得序列化为json
+    public ServerResponse<String> updateSoilNodeLocation(int node, String location, HttpSession session) {
+
+        System.out.println(node + ": " + location); // update数据库
+        return soilNodeService.updateSoilNodeLocation(node, location);
+    }
+
+    /**
+     * 删除指定结点
+     * @param node 结点号
+     * @param session
+     * @return
+     */
+    @RequestMapping(value = "deleteSoilNode.do", method = RequestMethod.DELETE)
+    @ResponseBody // 使得序列化为json
+    public ServerResponse<String> deleteSoilNode(int node, HttpSession session) {
+        System.out.println("要删除的结点： " + node); // update数据库
+        return soilNodeService.deleterSoilNode(node);
+    }
+
+
+
 }

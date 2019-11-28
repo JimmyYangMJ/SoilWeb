@@ -33,7 +33,22 @@
         soil_node(node, state, interval_s, location, last_update)
     VALUE
 	    (#{node}, #{state}, #{interval_s},#{location}, NOW());
-  </insert>
+    </insert>
+
+    <update id="updateSoilNodeLocation" parameterType="map" >
+        update soil_node
+        SET location = #{location}
+        where node = #{node};
+    </update>
+
+    <delete id="deleteSoilNode" parameterType="java.lang.Integer" >
+    DELETE FROM
+        soil_node
+    where node = #{node};
+    </delete>
+
+
+
 
 
 

@@ -24,4 +24,20 @@ public interface SoilNodeMapper {
      * @return
      */
     int insertSoilNode(SoilNode soilNode);
+
+
+    /**
+     * 修改结点 位置信息
+     * @param node 结点号
+     * @param location 位置信息
+     * @return
+     */
+    int updateSoilNodeLocation(@Param("node") int node, @Param("location") String location);
+
+    /**
+     * 删除一个结点
+     * @param node
+     * @return
+     */
+    int deleteSoilNode(@Param("node") int node);
 }
