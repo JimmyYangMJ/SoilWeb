@@ -19,6 +19,15 @@ public interface ISoilNodeService {
     ServerResponse<List<SoilNode>> selectSoilNodeSet();
 
 
-    //  Todo 增加一个结点
+    /**
+     * 增加一个结点
+     * @param soilNode 结点
+     * @return
+     */
+    ServerResponse<String> insertSoilNode(SoilNode soilNode);
+
+    // Todo 修改结点位置信息
+
+    // Todo 删除一个结点（结点号）
 
 }

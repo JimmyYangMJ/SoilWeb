@@ -17,4 +17,11 @@ public interface SoilNodeMapper {
      * @return 结点信息表
      */
     List<SoilNode> selectSoilNodeSet();
+
+    /**
+     * 增加一个结点
+     * @param soilNode 结点
+     * @return
+     */
+    int insertSoilNode(SoilNode soilNode);
 }

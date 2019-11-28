@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 
 /**
- * 结点信息
+ * 结点信息表
  * @author ymj
  * @Date： 2019/11/13 20:10
  */

@@ -31,7 +31,7 @@ public class SoilNodeController {
     private SoilNodeServiceImpl soilNodeService;
 
     /**
-     * 查询所有结点信息
+     * 1.查询所有结点信息
      * 接口
      * @param session 会话
      * @return json序列
@@ -59,25 +59,17 @@ public class SoilNodeController {
      */
     @RequestMapping(value = "addSoilNode.do", method = RequestMethod.POST)
     @ResponseBody // 使得序列化为json
-    public ServerResponse<List<SoilNode>> addSoilNode(int node, String location, HttpSession session) {
+    public ServerResponse<String> addSoilNode(int node, String location, HttpSession session) {
         List<SoilNode> list  = new ArrayList<>();
 //        SimpleDateFormat sdf = new SimpleDateFormat();// 格式化时间
 //        sdf.applyPattern("yyyy-MM-dd HH:mm:ss");// a为am/pm的标记
         Date date = new Date();// 获取当前时间
 
         SoilNode soilNode = new SoilNode(node, "00", 0, location, date);
-        System.out.println(soilNode);
-        list.add(soilNode);
-        ServerResponse<List<SoilNode>> response = null;
 
-        System.out.println(list);
-        if(list.size() == 0 ){
-            response = ServerResponse.createByErrorMessage("插入失败");
-        }else {
-            response = ServerResponse.createBySuccess("插入成功", list);
-        }
+        System.out.println(soilNode); // 存入数据库
+        return soilNodeService.insertSoilNode(soilNode);
 
-        System.out.println(response);
-        return response;
+
     }
 }

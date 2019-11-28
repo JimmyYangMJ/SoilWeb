@@ -29,4 +29,14 @@ public class SoilNodeServiceImpl implements ISoilNodeService {
         }
         return ServerResponse.createBySuccess("查询成功", resultCount);
     }
+
+    @Override
+    public ServerResponse<String> insertSoilNode(SoilNode soilNode) {
+
+        int resultCount = soilNodeMapper.insertSoilNode(soilNode);
+        if(resultCount == 0){
+            return ServerResponse.createByErrorMessage("添加失败");
+        }
+        return ServerResponse.createBySuccessMessage("添加成功");
+    }
 }

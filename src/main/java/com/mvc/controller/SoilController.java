@@ -23,7 +23,7 @@ public class SoilController {
     private ISoilService iSoilService;
 
     /**
-     * 查询某天的某节点水势信息
+     * 1.查询某天的某节点水势信息
      * 接口
      * @param node 结点
      * @param day 日期
@@ -47,7 +47,7 @@ public class SoilController {
 
 
     /**
-     * 查询某时间段的水势
+     * 2.查询某时间段的水势
      * @param startTime 开始时间
      * @param endTime 结束时间
      * @param session
@@ -72,7 +72,7 @@ public class SoilController {
 
 
     /**
-     * 查询有数据的是哪几天
+     * 3.查询有数据的是哪几天
      * 接口
      * @param session
      * @return

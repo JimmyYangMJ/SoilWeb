@@ -28,6 +28,13 @@
         from soil_node
     </select>
 
+    <insert id="insertSoilNode" parameterType="com.mvc.pojo.SoilNode" >
+    INSERT INTO
+        soil_node(node, state, interval_s, location, last_update)
+    VALUE
+	    (#{node}, #{state}, #{interval_s},#{location}, NOW());
+  </insert>
+
 
 
 </mapper>
