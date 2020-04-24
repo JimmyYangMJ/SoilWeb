@@ -29,7 +29,8 @@
                 trigger: 'axis'
             },
             legend: {
-                data:[nodeId, '节点二']
+                data:[nodeId]
+                // , '节点二'
             },
             dataZoom:[
                 {
@@ -90,22 +91,23 @@
                             {type : 'average', name: '平均值'}
                         ]
                     }
-                },
-                {
-                    name:'节点二',
-                    type:'line',
-                    data:[1, -2, 2, 5, 3, 2, 0,4],
-                    markPoint : {
-                        data : [
-                            {name : '周最低', value : -2, xAxis: 1, yAxis: -1.5}
-                        ]
-                    },
-                    markLine : {
-                        data : [
-                            {type : 'average', name : '平均值'}
-                        ]
-                    }
                 }
+                // ,
+                // {
+                //     name:'节点二',
+                //     type:'line',
+                //     data:[1, -2, 2, 5, 3, 2, 0,4],
+                //     markPoint : {
+                //         data : [
+                //             {name : '周最低', value : -2, xAxis: 1, yAxis: -1.5}
+                //         ]
+                //     },
+                //     markLine : {
+                //         data : [
+                //             {type : 'average', name : '平均值'}
+                //         ]
+                //     }
+                // }
             ]
         };
 

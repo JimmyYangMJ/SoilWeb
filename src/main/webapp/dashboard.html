@@ -19,11 +19,42 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
     <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 
+    <!-- 百度地图 API -->
+    <script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=jQzzGoociMMSVKUPvpII4IBUBQMHve1l"></script>
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
     <script src="assets/js/paper-dashboard.js"></script>
 
 </head>
 <body>
+<!--添加结点模态框-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">添加结点</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">结点号:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确定添加</button>
+            </div>
+        </div>
+    </div>
+</div>
     <div class="wrapper">
         <!-- 引入侧边栏-->
         <script type="text/javascript">
@@ -39,6 +70,8 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
+                        <!-- 地图显示 -->
+                        <div class="map" id="allmap" style="height: 1000px" >结点地图显示</div>
 
                         <div align="center">
                             <label for="start">开始日期：</label><input id="start" type="date" value="2018-08-13"/>
@@ -80,6 +113,7 @@
                                             <i class=""></i> 3秒前更新
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -95,6 +129,7 @@
 
     <script src="js/echartsTest/echartsDynamic.js"></script>
     <script src="js/echartsTest/echartsStatic.js"></script>
+    <script src="js/mapShow/nodeMap2.js"></script>
 </body>
 
 </html>

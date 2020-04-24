@@ -30,22 +30,33 @@
 
     <insert id="insertSoilNode" parameterType="com.mvc.pojo.SoilNode" >
     INSERT INTO
-        soil_node(node, state, interval_s, location, last_update)
+        soil_node(node, state, interval_s, lng, lat, last_update)
     VALUE
-	    (#{node}, #{state}, #{interval_s},#{location}, NOW());
+	    (#{node}, #{state}, #{interval_s},#{lng}, #{lat}, NOW());
     </insert>
 
     <update id="updateSoilNodeLocation" parameterType="map" >
         update soil_node
-        SET location = #{location}
+        <if test="lng != null" >
+            SET lng = #{lng}, lat = #{lat}
+        </if>
+        <if test="lng == null" >
+            SET lng = null, lat = null
+        </if>
         where node = #{node};
     </update>
 
     <delete id="deleteSoilNode" parameterType="java.lang.Integer" >
-    DELETE FROM
-        soil_node
-    where node = #{node};
+        DELETE FROM
+            soil_node
+        where node = #{node};
     </delete>
+
+    <select id="selectSoilNodeLocationSet" resultType="com.mvc.pojo.SoilNodeLocation">
+        SELECT node, lng, lat
+        FROM soil_node;
+    </select>
+
 
 
 

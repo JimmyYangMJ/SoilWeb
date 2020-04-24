@@ -17,23 +17,36 @@ public class SoilNode {
     private String state;
     /** 监测频率， 单位秒*/
     private int interval_s;
-    /** 结点位置坐标 */
-    private String location;
+    /** 经度 */
+    private double lng;
+    /** 纬度 */
+    private double lat;
     /** 信息修改时间 */
     private Date last_update;
-
-
 
     public SoilNode() {
         super();
     }
 
-    public SoilNode(int node, String state, int interval_s, String location, Date last_update) {
+    public SoilNode(int node, String state, int interval_s, double lng, double lat, Date last_update) {
         this.node = node;
         this.state = state;
         this.interval_s = interval_s;
-        this.location = location;
+        this.lng = lng;
+        this.lat = lat;
         this.last_update = last_update;
+    }
+
+    @Override
+    public String toString() {
+        return "SoilNode{" +
+                "node=" + node +
+                ", state='" + state + '\'' +
+                ", interval_s=" + interval_s +
+                ", lng=" + lng +
+                ", lat=" + lat +
+                ", last_update=" + last_update +
+                '}';
     }
 
     public int getNode() {
@@ -60,12 +73,20 @@ public class SoilNode {
         this.interval_s = interval_s;
     }
 
-    public String getLocation() {
-        return location;
+    public double getLng() {
+        return lng;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLng(double lng) {
+        this.lng = lng;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
     }
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT")
@@ -75,16 +96,5 @@ public class SoilNode {
 
     public void setLast_update(Date last_update) {
         this.last_update = last_update;
-    }
-
-    @Override
-    public String toString() {
-        return "SoilNode{" +
-                "nodeId=" + node +
-                ", status=" + state +
-                ", interval=" + interval_s +
-                ", location=" + location +
-                ", dateTime=" + last_update +
-                '}';
     }
 }

@@ -121,7 +121,7 @@ setInterval(function () {
         series: [{
             data: data
         }]
-    });
+    }, window.onresize = myChart.resize);
 }, 2100);;
 if (option && typeof option === "object") {
     myChart.setOption(option, true);

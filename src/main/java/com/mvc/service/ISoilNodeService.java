@@ -2,6 +2,7 @@ package com.mvc.service;
 
 import com.mvc.common.ServerResponse;
 import com.mvc.pojo.SoilNode;
+import com.mvc.pojo.SoilNodeLocation;
 
 import java.util.List;
 
@@ -29,10 +30,11 @@ public interface ISoilNodeService {
     /**
      * 修改结点位置信息
      * @param node 结点号
-     * @param location 结点位置
+     * @param lng 经度
+     * @param lat 纬度
      * @return
      */
-    ServerResponse<String> updateSoilNodeLocation(int node, String location);
+    ServerResponse<String> updateSoilNodeLocation(int node, Double lng, Double lat);
 
     /**
      * 删除一个结点（结点号）
@@ -40,6 +42,13 @@ public interface ISoilNodeService {
      * @return
      */
     ServerResponse<String> deleterSoilNode(int node);
+
+    /**
+     * 查询所有结点位置信息
+     * @return 结点相关位置 List
+     */
+    ServerResponse<List<SoilNodeLocation>> selectSoilNodeLocationSet();
+
 
 
 }

@@ -3,6 +3,7 @@ package com.mvc.service.impl;
 import com.mvc.common.ServerResponse;
 import com.mvc.dao.SoilNodeMapper;
 import com.mvc.pojo.SoilNode;
+import com.mvc.pojo.SoilNodeLocation;
 import com.mvc.service.ISoilNodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,9 +42,9 @@ public class SoilNodeServiceImpl implements ISoilNodeService {
     }
 
     @Override
-    public ServerResponse<String> updateSoilNodeLocation(int node, String location) {
+    public ServerResponse<String> updateSoilNodeLocation(int node, Double lng, Double lat) {
 
-        int resultCount = soilNodeMapper.updateSoilNodeLocation(node, location);
+        int resultCount = soilNodeMapper.updateSoilNodeLocation(node, lng, lat);
         if(resultCount == 0){
             return ServerResponse.createByErrorMessage("更新失败");
         }
@@ -58,4 +59,16 @@ public class SoilNodeServiceImpl implements ISoilNodeService {
         }
         return ServerResponse.createBySuccessMessage("删除成功");
     }
+
+    @Override
+    public ServerResponse<List<SoilNodeLocation>> selectSoilNodeLocationSet() {
+        List<SoilNodeLocation> resultCount = soilNodeMapper.selectSoilNodeLocationSet();
+
+        if(resultCount.size() == 0 ){
+            return ServerResponse.createByErrorMessage("没有相应记录");
+        }
+        return ServerResponse.createBySuccess("查询成功", resultCount);
+    }
+
+
 }
