@@ -4,6 +4,7 @@ import com.mvc.common.Const;
 import com.mvc.common.ServerResponse;
 import com.mvc.pojo.SoilNode;
 import com.mvc.pojo.SoilNodeLocation;
+import com.mvc.service.cloudNio.NioServerWrite;
 import com.mvc.service.impl.SoilNodeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,24 @@ public class SoilNodeController {
 
     @Autowired
     private SoilNodeServiceImpl soilNodeService;
+
+    /**
+     * 向下位机发送消息
+     * 接口
+     * @param session 会话
+     * @return json序列
+     */
+    @RequestMapping(value = "sendmessage.do", method = RequestMethod.GET)
+    @ResponseBody // 使得序列化为json
+    public ServerResponse<String> sendmassage(int id, String message,HttpSession session){
+
+        System.out.println("客户机 " + id + " 发送: " + message);
+
+        NioServerWrite.setSendId(id);
+        NioServerWrite.setSendMessage(message);
+        // todo 发送状态
+        return ServerResponse.createBySuccessMessage("发送成功");
+    }
 
     /**
      * 1.查询所有结点信息
