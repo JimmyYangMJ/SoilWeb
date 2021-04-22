@@ -15,7 +15,7 @@
 
   <properties>
     <jackson-databind.version>2.9.9.2</jackson-databind.version>
-    <mybatis.version>3.4.6</mybatis.version>
+    <mybatis.version>3.5.6</mybatis.version>
 
     <mysql.connect.version>8.0.13</mysql.connect.version>
     <junit.version>4.12</junit.version>
