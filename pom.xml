@@ -14,7 +14,7 @@
   <url>http://www.example.com</url>
 
   <properties>
-    <jackson-databind.version>2.9.9.2</jackson-databind.version>
+    <jackson-databind.version>2.9.10.8</jackson-databind.version>
     <mybatis.version>3.4.6</mybatis.version>
 
     <mysql.connect.version>8.0.13</mysql.connect.version>
